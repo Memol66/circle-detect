@@ -1,0 +1,17 @@
+% Read the image
+image = imread('your_image.jpg');
+
+% Convert the image to grayscale
+gray = rgb2gray(image);
+
+% Detect circles using Hough Transform
+[centers, radii] = imfindcircles(gray, [20, 50]);
+
+% If circles are found, draw them
+if ~isempty(centers)
+    imshow(image);
+    viscircles(centers, radii,'EdgeColor','g');
+    title('Detected Circles');
+else
+    disp('No circles detected.');
+end
